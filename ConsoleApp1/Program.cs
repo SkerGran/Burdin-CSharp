@@ -2,17 +2,34 @@
 
 namespace ConsoleApp1
 {
-    internal class Program
+    internal static class Program
     {
         static void Main(string[] args)
         {
-                Console.WriteLine("Введите случайное число:");
-                int testNumber = Convert.ToInt32(Console.ReadLine());
-                if (testNumber > 7)
+            Console.WriteLine("Введите случайное число:");
+            int input = GetNumber();
+            if (input > 7)
+            {
+                Console.WriteLine("Привет");
+            }
+            int GetNumber()
+            {
+                int checkedNumber;
+                while (true)
                 {
-                    Console.WriteLine("Привет");
+                    string input = Console.ReadLine();
+                    bool result = int.TryParse(input, out checkedNumber);
+                    if (result)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Введено не число, повторите ввод.");
+                    }
                 }
-                Console.Read();
+                return checkedNumber;
+            }
         }
     }
 }
